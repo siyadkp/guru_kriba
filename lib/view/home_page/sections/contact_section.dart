@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guru_kripa/view/widgets/celestial/celestial.dart';
 import 'package:guru_kripa/view/widgets/cosmic/cosmic.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:guru_kripa/utils/icons/brand_icons.dart';
 import 'package:guru_kripa/model/site_content/site_content.dart';
 import 'package:guru_kripa/utils/colors/app_colors.dart';
 import 'package:guru_kripa/utils/constants/app_contact.dart';
@@ -115,7 +115,7 @@ class ContactSection extends StatelessWidget {
                 ),
                 const AppButton(
                   label: 'WhatsApp Us',
-                  faIcon: FontAwesomeIcons.whatsapp,
+                  icon: BrandIcons.whatsapp,
                   variant: AppButtonVariant.whatsapp,
                   onPressed: ContactLauncher.openWhatsApp,
                 ),

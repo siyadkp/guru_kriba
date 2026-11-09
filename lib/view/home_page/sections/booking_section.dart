@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guru_kripa/view/widgets/cosmic/cosmic.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:guru_kripa/utils/icons/brand_icons.dart';
 import 'package:guru_kripa/model/site_content/site_content.dart';
 import 'package:guru_kripa/utils/colors/app_colors.dart';
 import 'package:guru_kripa/utils/launcher/contact_launcher.dart';
@@ -48,7 +48,7 @@ class BookingSection extends StatelessWidget {
             children: [
               AppButton(
                 label: 'Enquire on WhatsApp',
-                faIcon: FontAwesomeIcons.whatsapp,
+                icon: BrandIcons.whatsapp,
                 variant: AppButtonVariant.whatsapp,
                 compact: true,
                 onPressed: ContactLauncher.openWhatsApp,
@@ -457,8 +457,8 @@ class _BookingFormState extends State<BookingForm> {
                       color: AppColors.whatsapp.withValues(alpha: 0.12),
                       shape: BoxShape.circle,
                     ),
-                    child: const FaIcon(
-                      FontAwesomeIcons.whatsapp,
+                    child: const Icon(
+                      BrandIcons.whatsapp,
                       color: Color(0xFF128C4A),
                       size: 22,
                     ),
@@ -529,7 +529,7 @@ class _BookingFormState extends State<BookingForm> {
                 label: _sending
                     ? 'Opening WhatsApp…'
                     : 'Send Booking Request on WhatsApp',
-                faIcon: FontAwesomeIcons.whatsapp,
+                icon: BrandIcons.whatsapp,
                 variant: AppButtonVariant.dark,
                 expand: true,
                 onPressed: _sending ? null : _submit,

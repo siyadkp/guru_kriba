@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:guru_kripa/utils/icons/brand_icons.dart';
 import 'package:guru_kripa/utils/colors/app_colors.dart';
 import 'package:guru_kripa/utils/launcher/contact_launcher.dart';
 import 'package:guru_kripa/utils/theme/app_text.dart';
@@ -135,8 +135,8 @@ class _WhatsAppFabState extends State<WhatsAppFab> {
                           ],
                         ),
                         alignment: Alignment.center,
-                        child: FaIcon(
-                          FontAwesomeIcons.whatsapp,
+                        child: Icon(
+                          BrandIcons.whatsapp,
                           color: Colors.white,
                           size: size * 0.5,
                         ),

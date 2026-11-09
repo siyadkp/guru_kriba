@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guru_kripa/view/widgets/cosmic/cosmic.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:guru_kripa/utils/icons/brand_icons.dart';
 import 'package:guru_kripa/model/site_content/site_content.dart';
 import 'package:guru_kripa/utils/colors/app_colors.dart';
 import 'package:guru_kripa/utils/launcher/contact_launcher.dart';
@@ -139,7 +139,7 @@ class _ShareExperienceCard extends StatelessWidget {
               const SizedBox(height: 28),
               AppButton(
                 label: 'Share Your Experience',
-                faIcon: FontAwesomeIcons.whatsapp,
+                icon: BrandIcons.whatsapp,
                 variant: AppButtonVariant.outlineDark,
                 compact: true,
                 onPressed: () => ContactLauncher.openWhatsApp(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guru_kripa/view/widgets/cosmic/cosmic.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:guru_kripa/utils/icons/brand_icons.dart';
 import 'package:guru_kripa/model/site_content/site_content.dart';
 import 'package:guru_kripa/utils/colors/app_colors.dart';
 import 'package:guru_kripa/utils/launcher/contact_launcher.dart';
@@ -57,7 +57,7 @@ class _FaqSectionState extends State<FaqSection> {
                 const SizedBox(height: 20),
                 AppButton(
                   label: 'Ask on WhatsApp',
-                  faIcon: FontAwesomeIcons.whatsapp,
+                  icon: BrandIcons.whatsapp,
                   variant: AppButtonVariant.dark,
                   compact: true,
                   onPressed: ContactLauncher.openWhatsApp,

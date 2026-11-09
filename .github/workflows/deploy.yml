@@ -1,0 +1,64 @@
+# Builds, tests and deploys the website to Cloudways on every push to main.
+#
+# Repository secrets (Settings → Secrets and variables → Actions):
+#   CW_SSH_KEY  required  private SSH key whose public half is added in
+#                         Cloudways → Server → Master Credentials → SSH keys
+#   CW_HOST     optional  server IP        (default in deploy.sh)
+#   CW_USER     optional  SSH user         (default in deploy.sh)
+#   CW_PATH     optional  web root         (default in deploy.sh)
+# Without CW_SSH_KEY the workflow still tests and builds, then skips upload.
+name: Deploy website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-website
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CW_SSH_KEY: ${{ secrets.CW_SSH_KEY }}
+      CW_HOST: ${{ secrets.CW_HOST }}
+      CW_USER: ${{ secrets.CW_USER }}
+      CW_PATH: ${{ secrets.CW_PATH }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.3
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
+
+      - name: Set up SSH
+        if: env.CW_SSH_KEY != ''
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$CW_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          # Pinned host key of the Cloudways server (public information):
+          # the upload only ever goes to the real server.
+          echo "${CW_HOST:-178.128.241.178} ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDqwTEW4IFNgZ6jQ5sU9zmG1PCAHZbRiWg4hpHnMMne2" >> ~/.ssh/known_hosts
+
+      - name: Build and deploy
+        if: env.CW_SSH_KEY != ''
+        run: CW_KEY="$HOME/.ssh/deploy_key" ./deploy.sh
+
+      - name: Deployment skipped
+        if: env.CW_SSH_KEY == ''
+        run: echo "::warning::CW_SSH_KEY secret is not set, so the site was tested but not deployed."

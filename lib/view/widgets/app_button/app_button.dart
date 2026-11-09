@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:guru_kripa/utils/colors/app_colors.dart';
 import 'package:guru_kripa/utils/theme/app_text.dart';
 import 'package:guru_kripa/view/widgets/viewport/viewport.dart';
@@ -38,7 +37,6 @@ class AppButton extends StatefulWidget {
     required this.onPressed,
     this.variant = AppButtonVariant.dark,
     this.icon,
-    this.faIcon,
     this.compact = false,
     this.expand = false,
   });
@@ -47,7 +45,6 @@ class AppButton extends StatefulWidget {
   final VoidCallback? onPressed;
   final AppButtonVariant variant;
   final IconData? icon;
-  final FaIconData? faIcon;
   final bool compact;
   final bool expand;
 
@@ -108,9 +105,7 @@ class _AppButtonState extends State<AppButton> {
         widget.variant != AppButtonVariant.outlineLight;
     final iconSize = widget.compact ? 16.0 : 18.0;
 
-    final Widget? icon = widget.faIcon != null
-        ? FaIcon(widget.faIcon, size: iconSize, color: c.fg)
-        : widget.icon != null
+    final Widget? icon = widget.icon != null
         ? Icon(widget.icon, size: iconSize, color: c.fg)
         : null;
 
