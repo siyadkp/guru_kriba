@@ -185,17 +185,17 @@ class SiteContent {
   ];
 
   // ---------------------------------------------------------- ASTROLOGER
-  static const String astrologerName = 'Vishnu Sreekumar';
+  static const String astrologerName = 'Vishnu\u00A0C.S';
   static const String astrologerRole = 'Astrologer & Spiritual Consultant';
   static const List<String> astrologerParagraphs = [
-    'Vishnu Sreekumar is an astrologer and spiritual consultant whose practice '
+    'Vishnu\u00A0C.S is an astrologer and spiritual consultant whose practice '
         'combines analytical rigor with authentic traditional remedies. His '
         'core work spans KP Astrology, Advanced Vedic Astrology, KP-based '
         'Birth-Time Rectification, Medical Astrology, Numerology, Gemmology, '
         'Life Coaching, and traditional Spiritual Remedial Rituals.',
     'His consultation style prioritizes exhaustive chart verification and '
         'empirical analysis. In addition to personal predictive readings, '
-        'Vishnu Sreekumar guides clients through spiritual remedies and poojas '
+        'Vishnu\u00A0C.S guides clients through spiritual remedies and poojas '
         'designed to clear negative planetary influences, extract heavy '
         'environmental energies, and foster spiritual alignment.',
     'Each consultation is approached individually, ensuring that methods, '
@@ -461,6 +461,16 @@ class SiteContent {
   /// Add genuine client feedback here, only with the client's permission
   /// to show their name. The section shows these cards automatically.
   static const List<Testimonial> testimonials = [];
+
+  /// The Testimonials section (and its menu item) only appears once real
+  /// client feedback has been added above.
+  static bool get showTestimonials => testimonials.isNotEmpty;
+
+  /// Sections shown on the page and in the menus.
+  static List<SiteSection> get visibleSections => [
+    for (final s in SiteSection.values)
+      if (s != SiteSection.testimonials || showTestimonials) s,
+  ];
 
   // ----------------------------------------------------------------- FAQ
   static const List<FaqItem> faqs = [

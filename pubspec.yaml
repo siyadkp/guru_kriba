@@ -62,6 +62,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/images/astrologer_vishnu.jpg
+
   # Poppins (headings) and Inter (body), subset to Latin characters so the
   # whole set is ~300 KB and loads with the app — no external font requests.
   fonts:

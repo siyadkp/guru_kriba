@@ -37,7 +37,7 @@ class ContactSection extends StatelessWidget {
             icon: Icons.location_on_outlined,
             label: 'Office Location',
             value: AppContact.officeLocation,
-            onTap: null,
+            onTap: ContactLauncher.openMap,
           ),
           (
             icon: Icons.videocam_outlined,

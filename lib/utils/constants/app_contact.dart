@@ -1,22 +1,26 @@
 /// Business contact details shown on the website and used by every
-/// Call / WhatsApp / Email button.
-///
-/// TODO: Replace these placeholder values with the real business details
-/// before publishing the website.
+/// Call / WhatsApp / Email / Map button.
 class AppContact {
-  /// WhatsApp number in international format, digits only, no "+" or
-  /// spaces. Example for India: 919876543210
-  static const String whatsappNumber = '910000000000';
+  /// WhatsApp number in international format, digits only.
+  static const String whatsappNumber = '919072018750';
 
   /// Phone number as dialled (used for "Call Now").
-  static const String phoneDial = '+910000000000';
+  static const String phoneDial = '+919072018750';
 
   /// Phone number as displayed on the page.
-  static const String phoneDisplay = '+91 00000 00000';
+  static const String phoneDisplay = '+91 90720 18750';
 
-  static const String email = 'hello@example.com';
+  static const String email = 'vishnucs.careers@gmail.com';
 
-  static const String officeLocation = 'Office address coming soon';
+  /// Office address, as shown on the page. Non-breaking spaces (\u00A0)
+  /// keep each part together, so lines only break after commas.
+  static const String officeLocation =
+      'Thanka\u00A0Nivas, Subhas\u00A0Lane, Canal\u00A0Road, Aluva, '
+      'Ernakulam, Kerala\u00A0–\u00A0683102';
+
+  /// Address used for the "open in Google Maps" link.
+  static const String mapsQuery =
+      'Thanka Nivas, Subhas Lane, Canal Road, Aluva, Ernakulam, Kerala 683102';
 
   static const String consultationFormat =
       'Online Audio/Video Sessions & In-Person Appointments';

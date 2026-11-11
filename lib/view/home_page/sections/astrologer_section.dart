@@ -138,7 +138,6 @@ class _Portrait extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const photo = AppImages.astrologerPhoto;
     return Container(
       width: size,
       height: size,
@@ -160,31 +159,20 @@ class _Portrait extends StatelessWidget {
       ),
       clipBehavior: Clip.antiAlias,
       alignment: Alignment.center,
-      child: photo != null
-          // Gray-scale imagery, as the design brief asks.
-          ? ColorFiltered(
-              colorFilter: const ColorFilter.matrix([
-                0.2126, 0.7152, 0.0722, 0, 0, //
-                0.2126, 0.7152, 0.0722, 0, 0, //
-                0.2126, 0.7152, 0.0722, 0, 0, //
-                0, 0, 0, 1, 0,
-              ]),
-              child: Image.asset(
-                photo,
-                width: size,
-                height: size,
-                fit: BoxFit.cover,
-              ),
-            )
-          : Text(
-              'VS',
-              style: AppText.heading(
-                size * 0.28,
-                color: Colors.white,
-                weight: FontWeight.w300,
-                letterSpacing: 6,
-              ),
-            ),
+      child: Image.asset(
+        AppImages.astrologerPhoto,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        filterQuality: FilterQuality.medium,
+        semanticLabel: '${SiteContent.astrologerName}, astrologer',
+        // Fade the photo in once it has loaded.
+        frameBuilder: (context, child, frame, wasSyncLoaded) => AnimatedOpacity(
+          opacity: wasSyncLoaded || frame != null ? 1 : 0,
+          duration: const Duration(milliseconds: 500),
+          child: child,
+        ),
+      ),
     );
   }
 }

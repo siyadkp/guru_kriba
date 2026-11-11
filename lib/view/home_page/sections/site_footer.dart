@@ -110,6 +110,11 @@ class SiteFooter extends StatelessWidget {
           icon: Icons.mail_outline,
           onTap: () => ContactLauncher.email(subject: 'Consultation Enquiry'),
         ),
+        _FooterLink(
+          label: AppContact.officeLocation,
+          icon: Icons.location_on_outlined,
+          onTap: ContactLauncher.openMap,
+        ),
       ],
     );
 

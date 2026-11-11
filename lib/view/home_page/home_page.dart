@@ -181,10 +181,11 @@ class _HomePageState extends State<HomePage> {
                       SiteSection.booking,
                       BookingSection(selectedService: _selectedService),
                     ),
-                    _section(
-                      SiteSection.testimonials,
-                      const TestimonialsSection(),
-                    ),
+                    if (SiteContent.showTestimonials)
+                      _section(
+                        SiteSection.testimonials,
+                        const TestimonialsSection(),
+                      ),
                     _section(SiteSection.faq, const FaqSection()),
                     _section(SiteSection.contact, const ContactSection()),
                     RepaintBoundary(child: SiteFooter(onNavigate: _navigate)),

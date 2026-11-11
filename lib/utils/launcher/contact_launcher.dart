@@ -28,6 +28,15 @@ class ContactLauncher {
     ),
   );
 
+  /// Opens the office address in Google Maps.
+  static Future<bool> openMap() => _open(
+    Uri.https('www.google.com', '/maps/search/', {
+      'api': '1',
+      'query': AppContact.mapsQuery,
+    }),
+    newTab: true,
+  );
+
   static Future<bool> _open(Uri uri, {bool newTab = false}) async {
     try {
       return await launchUrl(

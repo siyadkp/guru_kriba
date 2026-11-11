@@ -11,15 +11,9 @@ import 'package:guru_kripa/view/widgets/app_button/app_button.dart';
 import 'package:guru_kripa/view/widgets/brand_mark/brand_mark.dart';
 
 /// Sections shown as links in the desktop header (booking is the button).
-const _navSections = [
-  SiteSection.home,
-  SiteSection.about,
-  SiteSection.astrologer,
-  SiteSection.services,
-  SiteSection.whyUs,
-  SiteSection.testimonials,
-  SiteSection.faq,
-  SiteSection.contact,
+List<SiteSection> get _navSections => [
+  for (final s in SiteContent.visibleSections)
+    if (s != SiteSection.booking) s,
 ];
 
 /// Sticky header: transparent over the hero, frosted off-white once the
@@ -289,7 +283,7 @@ class MobileNavDrawer extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
-                    for (final s in SiteSection.values)
+                    for (final s in SiteContent.visibleSections)
                       _DrawerItem(
                         label: s.label,
                         active: s == active,
