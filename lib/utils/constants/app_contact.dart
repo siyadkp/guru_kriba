@@ -15,12 +15,12 @@ class AppContact {
   /// Office address, as shown on the page. Non-breaking spaces (\u00A0)
   /// keep each part together, so lines only break after commas.
   static const String officeLocation =
-      'Thanka\u00A0Nivas, Subhas\u00A0Lane, Canal\u00A0Road, Aluva, '
+      'Gurukripa\u00A0Astro\u00A0Science, Canal\u00A0Road, Aluva, '
       'Ernakulam, Kerala\u00A0–\u00A0683102';
 
   /// Address used for the "open in Google Maps" link.
   static const String mapsQuery =
-      'Thanka Nivas, Subhas Lane, Canal Road, Aluva, Ernakulam, Kerala 683102';
+      'Gurukripa Astro Science, Canal Road, Aluva, Ernakulam, Kerala 683102';
 
   static const String consultationFormat =
       'Online Audio/Video Sessions & In-Person Appointments';
